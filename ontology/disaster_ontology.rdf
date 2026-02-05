@@ -641,5 +641,14 @@
   <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0773456432</contactNumber>
 </owl:NamedIndividual>
 
+<owl:NamedIndividual rdf:about="#Landslide_20206">
+  <rdf:type rdf:resource="#Landslide"/>
+  <occursIn rdf:resource="#Kandy"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Landslide_20206</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Medium</severityLevel>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2026-02-05</dateOccurred>
+</owl:NamedIndividual>
+
 
 </rdf:RDF>
