@@ -1,0 +1,645 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.srilanka.gov/disaster.owl"
+         xmlns="http://www.srilanka.gov/disaster.owl#">
+
+<owl:Ontology rdf:about="http://www.srilanka.gov/disaster.owl">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sri Lanka Disaster Management Ontology - Comprehensive disaster response system</rdfs:comment>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#occursIn">
+  <rdfs:domain rdf:resource="#Disaster"/>
+  <rdfs:range rdf:resource="#Location"/>
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Links a disaster to its location</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasShelter">
+  <rdfs:domain rdf:resource="#Location"/>
+  <rdfs:range rdf:resource="#Shelter"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#requiresResource">
+  <rdfs:domain rdf:resource="#Disaster"/>
+  <rdfs:range rdf:resource="#Resource"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#assignedTo">
+  <rdfs:domain rdf:resource="#Volunteer"/>
+  <rdfs:range rdf:resource="#Shelter"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#coordinatedBy">
+  <rdfs:domain rdf:resource="#DisasterResponse"/>
+  <rdfs:range rdf:resource="#Organization"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#affectsPopulation">
+  <rdfs:domain rdf:resource="#Disaster"/>
+  <rdfs:range rdf:resource="#AffectedPopulation"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasResponseTeam">
+  <rdfs:domain rdf:resource="#Disaster"/>
+  <rdfs:range rdf:resource="#ResponseTeam"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#locatedIn">
+  <rdfs:domain rdf:resource="#District"/>
+  <rdfs:range rdf:resource="#Province"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#hasName">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#capacity">
+  <rdfs:domain rdf:resource="#Shelter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#currentOccupancy">
+  <rdfs:domain rdf:resource="#Shelter"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#severityLevel">
+  <rdfs:domain rdf:resource="#Disaster"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#dateOccurred">
+  <rdfs:domain rdf:resource="#Disaster"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#affectedCount">
+  <rdfs:domain rdf:resource="#AffectedPopulation"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#contactNumber">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#status">
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#quantityAvailable">
+  <rdfs:domain rdf:resource="#Resource"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#skillLevel">
+  <rdfs:domain rdf:resource="#Volunteer"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Disaster">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Base class for all types of disasters</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Location">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Geographic locations in Sri Lanka</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Shelter">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emergency shelter facilities</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Resource">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resources needed for disaster response</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Volunteer">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Volunteers assisting in disaster response</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#DisasterResponse">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Coordinated disaster response operations</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Organization">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Organizations involved in disaster management</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AffectedPopulation">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Population affected by disasters</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ResponseTeam">
+  <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emergency response teams</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#District">
+  <rdfs:subClassOf rdf:resource="#Location"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Province">
+  <rdfs:subClassOf rdf:resource="#Location"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Flood">
+  <rdfs:subClassOf rdf:resource="#Disaster"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Landslide">
+  <rdfs:subClassOf rdf:resource="#Disaster"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Cyclone">
+  <rdfs:subClassOf rdf:resource="#Disaster"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Drought">
+  <rdfs:subClassOf rdf:resource="#Disaster"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Tsunami">
+  <rdfs:subClassOf rdf:resource="#Disaster"/>
+</owl:Class>
+
+<owl:Class rdf:about="#FoodResource">
+  <rdfs:subClassOf rdf:resource="#Resource"/>
+</owl:Class>
+
+<owl:Class rdf:about="#MedicalResource">
+  <rdfs:subClassOf rdf:resource="#Resource"/>
+</owl:Class>
+
+<owl:Class rdf:about="#ClothingResource">
+  <rdfs:subClassOf rdf:resource="#Resource"/>
+</owl:Class>
+
+<owl:Class rdf:about="#WaterResource">
+  <rdfs:subClassOf rdf:resource="#Resource"/>
+</owl:Class>
+
+<owl:Class rdf:about="#KaijuAttack">
+  <rdfs:subClassOf rdf:resource="#Disaster"/>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#WesternProvince">
+  <rdf:type rdf:resource="#Province"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Western Province</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#CentralProvince">
+  <rdf:type rdf:resource="#Province"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Central Province</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SouthernProvince">
+  <rdf:type rdf:resource="#Province"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Southern Province</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NorthernProvince">
+  <rdf:type rdf:resource="#Province"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Northern Province</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#EasternProvince">
+  <rdf:type rdf:resource="#Province"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Eastern Province</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#SabaragamuwaProvince">
+  <rdf:type rdf:resource="#Province"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sabaragamuwa Province</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Colombo">
+  <rdf:type rdf:resource="#District"/>
+  <locatedIn rdf:resource="#WesternProvince"/>
+  <hasShelter rdf:resource="#ColomboCommunityCentre"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Colombo</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ColomboCommunityCentre">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Colombo Community Centre</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">400</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-11-2227777</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Kandy">
+  <rdf:type rdf:resource="#District"/>
+  <locatedIn rdf:resource="#CentralProvince"/>
+  <hasShelter rdf:resource="#KandyTownHall"/>
+  <hasShelter rdf:resource="#KandySchool"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kandy</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KandyTownHall">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kandy Town Hall</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-81-2222333</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KandySchool">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kandy Central School</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">250</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">120</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-81-2223444</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Ratnapura">
+  <rdf:type rdf:resource="#District"/>
+  <locatedIn rdf:resource="#SabaragamuwaProvince"/>
+  <hasShelter rdf:resource="#RatnapuraSchool"/>
+  <hasShelter rdf:resource="#RatnapuraTemple"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ratnapura</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RatnapuraSchool">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ratnapura Government School</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">450</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Full</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-45-2225555</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RatnapuraTemple">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ratnapura Buddhist Temple</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">150</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">100</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-45-2226666</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Galle">
+  <rdf:type rdf:resource="#District"/>
+  <locatedIn rdf:resource="#SouthernProvince"/>
+  <hasShelter rdf:resource="#GalleCommunityCentre"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Galle</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#GalleCommunityCentre">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Galle Community Centre</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">350</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-91-2228888</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Jaffna">
+  <rdf:type rdf:resource="#District"/>
+  <locatedIn rdf:resource="#NorthernProvince"/>
+  <hasShelter rdf:resource="#JaffnaSchool"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jaffna</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#JaffnaSchool">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jaffna Central School</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">280</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">80</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-21-2229999</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Batticaloa">
+  <rdf:type rdf:resource="#District"/>
+  <locatedIn rdf:resource="#EasternProvince"/>
+  <hasShelter rdf:resource="#BatticaloaHall"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Batticaloa</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BatticaloaHall">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Batticaloa Community Hall</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">220</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">150</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-65-2221111</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Nuwara_Eliya">
+  <rdf:type rdf:resource="#District"/>
+  <locatedIn rdf:resource="#CentralProvince"/>
+  <hasShelter rdf:resource="#NuwaraEliyaSchool"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nuwara Eliya</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#NuwaraEliyaSchool">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nuwara Eliya School</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">200</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">60</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Available</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-52-2222222</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Badulla">
+  <rdf:type rdf:resource="#District"/>
+  <locatedIn rdf:resource="#CentralProvince"/>
+  <hasShelter rdf:resource="#BadullaCommunityCentre"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Badulla</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#BadullaCommunityCentre">
+  <rdf:type rdf:resource="#Shelter"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Badulla Community Centre</hasName>
+  <capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">180</capacity>
+  <currentOccupancy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">90</currentOccupancy>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-55-2223333</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#FoodSupply">
+  <rdf:type rdf:resource="#FoodResource"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Food Supply Packs</hasName>
+  <quantityAvailable rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5000</quantityAvailable>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MedicalKit">
+  <rdf:type rdf:resource="#MedicalResource"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emergency Medical Kit</hasName>
+  <quantityAvailable rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">800</quantityAvailable>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DrinkingWater">
+  <rdf:type rdf:resource="#WaterResource"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Drinking Water Bottles</hasName>
+  <quantityAvailable rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">10000</quantityAvailable>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Blankets">
+  <rdf:type rdf:resource="#ClothingResource"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Blankets</hasName>
+  <quantityAvailable rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</quantityAvailable>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Tents">
+  <rdf:type rdf:resource="#Resource"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Emergency Tents</hasName>
+  <quantityAvailable rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">300</quantityAvailable>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ClothingPacks">
+  <rdf:type rdf:resource="#ClothingResource"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Clothing Packs</hasName>
+  <quantityAvailable rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1500</quantityAvailable>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Flood2024_Ratnapura">
+  <rdf:type rdf:resource="#Flood"/>
+  <occursIn rdf:resource="#Ratnapura"/>
+  <requiresResource rdf:resource="#FoodSupply"/>
+  <requiresResource rdf:resource="#MedicalKit"/>
+  <requiresResource rdf:resource="#DrinkingWater"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ratnapura Flood 2024</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High</severityLevel>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-05-15</dateOccurred>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Landslide2024_Kandy">
+  <rdf:type rdf:resource="#Landslide"/>
+  <occursIn rdf:resource="#Kandy"/>
+  <requiresResource rdf:resource="#MedicalKit"/>
+  <requiresResource rdf:resource="#FoodSupply"/>
+  <requiresResource rdf:resource="#Blankets"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kandy Landslide 2024</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Medium</severityLevel>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-06-20</dateOccurred>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Cyclone2024_Batticaloa">
+  <rdf:type rdf:resource="#Cyclone"/>
+  <occursIn rdf:resource="#Batticaloa"/>
+  <requiresResource rdf:resource="#Tents"/>
+  <requiresResource rdf:resource="#FoodSupply"/>
+  <requiresResource rdf:resource="#DrinkingWater"/>
+  <requiresResource rdf:resource="#MedicalKit"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Batticaloa Cyclone 2024</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High</severityLevel>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-11-10</dateOccurred>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Flood2025_Galle">
+  <rdf:type rdf:resource="#Flood"/>
+  <occursIn rdf:resource="#Galle"/>
+  <requiresResource rdf:resource="#FoodSupply"/>
+  <requiresResource rdf:resource="#MedicalKit"/>
+  <requiresResource rdf:resource="#ClothingPacks"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Galle Coastal Flood 2025</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Medium</severityLevel>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-08</dateOccurred>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resolved</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Drought2024_Jaffna">
+  <rdf:type rdf:resource="#Drought"/>
+  <occursIn rdf:resource="#Jaffna"/>
+  <requiresResource rdf:resource="#DrinkingWater"/>
+  <requiresResource rdf:resource="#FoodSupply"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jaffna Drought 2024</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High</severityLevel>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-03-01</dateOccurred>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Landslide2025_NuwaraEliya">
+  <rdf:type rdf:resource="#Landslide"/>
+  <occursIn rdf:resource="#Nuwara_Eliya"/>
+  <requiresResource rdf:resource="#MedicalKit"/>
+  <requiresResource rdf:resource="#FoodSupply"/>
+  <requiresResource rdf:resource="#Tents"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nuwara Eliya Tea Estate Landslide</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High</severityLevel>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-02-01</dateOccurred>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Flood2025_Colombo">
+  <rdf:type rdf:resource="#Flood"/>
+  <occursIn rdf:resource="#Colombo"/>
+  <requiresResource rdf:resource="#FoodSupply"/>
+  <requiresResource rdf:resource="#DrinkingWater"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Colombo Urban Flood 2025</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Low</severityLevel>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-01-25</dateOccurred>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Monitoring</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Landslide2024_Badulla">
+  <rdf:type rdf:resource="#Landslide"/>
+  <occursIn rdf:resource="#Badulla"/>
+  <requiresResource rdf:resource="#MedicalKit"/>
+  <requiresResource rdf:resource="#FoodSupply"/>
+  <requiresResource rdf:resource="#Blankets"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Badulla Hill Landslide</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Medium</severityLevel>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-08-12</dateOccurred>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resolved</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Nimal">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <assignedTo rdf:resource="#KandyTownHall"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Nimal Perera</hasName>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Advanced</skillLevel>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-77-1234567</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Kamala">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <assignedTo rdf:resource="#RatnapuraSchool"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kamala Silva</hasName>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intermediate</skillLevel>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-77-2345678</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Sunil">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <assignedTo rdf:resource="#GalleCommunityCentre"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sunil Fernando</hasName>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Advanced</skillLevel>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-77-3456789</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Anura">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <assignedTo rdf:resource="#BatticaloaHall"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Anura Bandara</hasName>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beginner</skillLevel>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-77-4567890</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Dilani">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <assignedTo rdf:resource="#JaffnaSchool"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Dilani Jayasinghe</hasName>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intermediate</skillLevel>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-77-5678901</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Ravi">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <assignedTo rdf:resource="#NuwaraEliyaSchool"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ravi Kumar</hasName>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Advanced</skillLevel>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-77-6789012</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Priya">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <assignedTo rdf:resource="#KandySchool"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Priya Gunasekara</hasName>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Intermediate</skillLevel>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-77-7890123</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Thisara">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <assignedTo rdf:resource="#ColomboCommunityCentre"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Thisara Wickramasinghe</hasName>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Beginner</skillLevel>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-77-8901234</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#DMC">
+  <rdf:type rdf:resource="#Organization"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Disaster Management Centre</hasName>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-11-2136136</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#RedCross">
+  <rdf:type rdf:resource="#Organization"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sri Lanka Red Cross Society</hasName>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-11-2691095</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ArmyRescue">
+  <rdf:type rdf:resource="#Organization"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sri Lanka Army Rescue Unit</hasName>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">+94-11-2430860</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Affected_Ratnapura2024">
+  <rdf:type rdf:resource="#AffectedPopulation"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ratnapura Flood Victims 2024</hasName>
+  <affectedCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5000</affectedCount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Affected_Kandy2024">
+  <rdf:type rdf:resource="#AffectedPopulation"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Kandy Landslide Victims 2024</hasName>
+  <affectedCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</affectedCount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Affected_Batticaloa2024">
+  <rdf:type rdf:resource="#AffectedPopulation"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Batticaloa Cyclone Victims 2024</hasName>
+  <affectedCount rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8000</affectedCount>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Ditwa_cyclone_2026">
+  <rdf:type rdf:resource="#Cyclone"/>
+  <occursIn rdf:resource="#Kandy"/>
+  <requiresResource rdf:resource="#Blankets"/>
+  <requiresResource rdf:resource="#DrinkingWater"/>
+  <requiresResource rdf:resource="#Tents"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ditwa_cyclone_2026</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High</severityLevel>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Resolved</status>
+  <dateOccurred rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2026-02-05</dateOccurred>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Org_TestRedCross">
+  <rdf:type rdf:resource="#Organization"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TestRedCross</hasName>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">119</contactNumber>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Resource_SuperPills">
+  <rdf:type rdf:resource="#MedicalResource"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SuperPills</hasName>
+  <quantityAvailable rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">500</quantityAvailable>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#MetaProvince">
+  <rdf:type rdf:resource="#Province"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MetaProvince</hasName>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Volunteer_Jane_Doe">
+  <rdf:type rdf:resource="#Volunteer"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jane Doe</hasName>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">999</contactNumber>
+  <skillLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Medical</skillLevel>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#KaijuAttack2026">
+  <rdf:type rdf:resource="#KaijuAttack"/>
+  <occursIn rdf:resource="#Colombo"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">KaijuAttack2026</hasName>
+  <severityLevel rdf:datatype="http://www.w3.org/2001/XMLSchema#string">High</severityLevel>
+  <status rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Active</status>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Org_XYZ">
+  <rdf:type rdf:resource="#Organization"/>
+  <hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">XYZ</hasName>
+  <contactNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string">0773456432</contactNumber>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>
